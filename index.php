@@ -111,7 +111,7 @@
                                 <div class="clearboth"></div>
                                 <div id="tradesymbolsGrid">
                                     <div class="trdeloader">
-                                        <img src="assets/images/trade_perf_loader.gif" alt="">
+                                        <img src="assets/images/trade_perf_loader.gif" alt="">&nbsp;&nbsp;(<label id="lbl_progressCounter">10</label><label>%)</label>
                                     </div>
                                 </div>
                            </div>
