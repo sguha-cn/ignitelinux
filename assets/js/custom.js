@@ -230,19 +230,9 @@ $('.pre-next .right-part').click(function(){
 });
 
 
-$('#stockcalculate').click(function(){
 
-   var stocktablechoose = $('#stocktablechoose').val();
-   var chartDateSelect = $('#chartDateSelect').val();
-   
-   $('.closingdatetrade').html('Closing Date :-'+chartDateSelect+' 4:00 PM');
-   $('.trdeloader').fadeIn();
-  // $(this).attr('disabled',true);
-   // $("#tradesymbolsGrid, #perfrmSymbolGrid").html('');
-   
-    $.get('stockListTrade.php', { selectedDate: chartDateSelect, selectedTable: stocktablechoose }).done(function (data) {
-        console.log(data);
-        var datagthp = JSON.parse(data);
+var showData = (function(data) {
+    var datagthp = JSON.parse(data);
         //var datagthp = JSON.parse(datagth);
         /*console.log(datagthp);
         console.log(datagthp.performance);*/
@@ -300,6 +290,45 @@ $('#stockcalculate').click(function(){
             $("#chartlistdialog .noDataFoundForChartList2").remove();
             $("#chartlistdialog .ui-iggrid-table:last").parent().append("<table class='noDataFoundForChartList2'><tr><td style='color:red;font-weight:bold'> No Data Found </td></tr></table>");            
         }
+});
+
+$('#stockcalculate').click(function(){
+
+   var stocktablechoose = $('#stocktablechoose').val();
+   var chartDateSelect = $('#chartDateSelect').val();
+   
+    $('.closingdatetrade').html('Closing Date :-'+chartDateSelect+' 4:00 PM');
+    $("#lbl_progressCounter").html("0");
+    $('.trdeloader').show();
+    var progressCounterTimer = window.setInterval(function() {
+        var counetrVal = parseInt($("#lbl_progressCounter").html());
+        if(counetrVal >= 90) {
+            window.clearInterval(progressCounterTimer);
+            progressCounterTimer = null;
+        }
+        counetrVal+=1;
+        $("#lbl_progressCounter").html(counetrVal);
+    },200);
+     // $(this).attr('disabled',true);
+    // $("#tradesymbolsGrid, #perfrmSymbolGrid").html('');
+   
+    $.get('stockListTrade.php', { selectedDate: chartDateSelect, selectedTable: stocktablechoose }).done(function (data) {
+        console.log(data);
+        if(progressCounterTimer != null) {
+            window.clearInterval(progressCounterTimer);
+        }
+        progressCounterTimer = window.setInterval(function() {
+            var counetrVal = parseInt($("#lbl_progressCounter").html());
+            if(counetrVal >= 100) {
+                window.clearInterval(progressCounterTimer);
+                progressCounterTimer = null;
+                showData(data);
+            }
+            counetrVal+=1;
+            $("#lbl_progressCounter").html(counetrVal);
+        },50);
+
+        
         
     });
    

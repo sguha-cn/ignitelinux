@@ -2826,6 +2826,10 @@ a.next{
 .trdeloader{
 	text-align: center; margin-top: 10%; display:none;
 }
+.trdeloader label {
+	color: white;
+	font-size:18px;
+}
 
 /*********************************************
 *******************************************/
