@@ -98,7 +98,7 @@ function scanningfunc($get_date,$conn){
 
                     if($CurrentTimeStamp == $LoopCurrTimeStamp) {
                         $selected_trade_close = $value->Close;
-                        $perfget_percent = floatval( ( floatval($scanningRow['lasttradeamount'] - $selected_trade_close) / $selected_trade_close) * 100);
+                        $perfget_percent = floatval( ( fllloatval($scanningRow['lasttradeamount'] - $selected_trade_close) / $selected_trade_close) * 100);
                         $perfget_percent = round($perfget_percent, 2);
 
                         if($perfget_percent >= 0){
@@ -122,7 +122,7 @@ function scanningfunc($get_date,$conn){
                 if($scan_result){
                     $dataHigh = round($dataHigh, 2);
                     $dataHighAvg = floatval($dataHigh/$count);
-                    if($scanningRow['lasttradeamount'] >= $dataHighAvg){
+                    if($scanningRow['lasttradeamount'] > $dataHighAvg){
 
                         // $trade_Performance_Data['date'] = $get_date;
                         $sql_get_id = "SELECT id FROM stockrecord WHERE symbol = '".$scanningRow['symbol']."'";

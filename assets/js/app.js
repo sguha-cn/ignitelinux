@@ -192,7 +192,7 @@ var igFinance = (function() {
                     x = "X";
                 }
             };*/
-            if (window.scanResultDates.indexOf(item.Date) > -1) {
+            if (window.scanResultDates.indexOf(item.Date) > -1) {console.log(JSON.stringify(window.scanResultDates));console.log(item.Date);
                 x = "X";
             }
             return x;
@@ -225,7 +225,7 @@ var igFinance = (function() {
                 console.log("0.60, 0.80");
                 setInterval = 40;
             } else if (chartWidth >= 0.80 && chartWidth <= 1.00) {
-                console.log("0.60, 0.80");
+                // console.log("0.60, 0.80");
                 setInterval = 100;
             }
 
@@ -1046,11 +1046,11 @@ var igFinance = (function() {
         },
 
         formatDataSourceVolume: function() {
-            var newDataView = igFinance.getDataView();
+            var newDataView = igFinance.getDataView(); 
 
             for (var i = 0; i < newDataView.length; i++) {
                 newDataView[i].Volume = helpers._numberFormatter(newDataView[i].Volume);
-            }
+            }  
 
 
             //console.log('fdf',newDataView);
@@ -1073,10 +1073,10 @@ var igFinance = (function() {
                         $("#tab1Name").html($.ig.tmpl($("#tab1Template").html(), igFinance.getDetailsDataView()));
                     }
                     $("#priceChart").igDataChart("option", "brushes", [$('.ui-selected').attr("data-poscolor")]);
-                }
+                }    
             });
             detailsDs.dataBind();
-        },
+        }, 
 
         changeTicker: function(symbol) {
 

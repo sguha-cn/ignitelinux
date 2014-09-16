@@ -166,6 +166,7 @@
                         <div>
                             <a href="#" class="portfolio_buy">Buy</a>
                             <a href="#" class="portfolio_sell">Sell</a>
+                            
                         </div>
                         <div class="equuity_position">
                             <h3>Equity Positions OPEN</h3>
@@ -395,8 +396,8 @@
     <script src="igniteui/js/infragistics.dv.js"></script>
     <script src="assets/js/config.js"></script>
     <!--<script src="http://igniteui.com/js-data/northwind"></script>-->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/min/custom.js"></script>
+    <script src="assets/js/min/app.js"></script>
    
 </body>
 </html>
